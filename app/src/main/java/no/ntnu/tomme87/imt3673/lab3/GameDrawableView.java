@@ -87,7 +87,6 @@ public class GameDrawableView extends View implements SensorEventListener {
         Log.d(TAG, "maxY:"+maxY);
     }
 
-
     @Override
     protected void onDraw(Canvas canvas) {
         // The ball
@@ -160,7 +159,7 @@ public class GameDrawableView extends View implements SensorEventListener {
     private void colision(int type) {
         vibrator.vibrate(100);
         Timer timer = new Timer();
-        timer.schedule(new AnimateBounce(30, type), 0, 20);
+        timer.schedule(new AnimateBounce(30, type), 0, 10);
     }
 
     class AnimateBounce extends TimerTask {
@@ -183,16 +182,16 @@ public class GameDrawableView extends View implements SensorEventListener {
             Log.d(TAG, "type = " + this.type);
             switch (type) {
                 case LEFT_TO_RIGHT:
-                    x += 20;
+                    x += 15;
                     break;
                 case RIGHT_TO_LEFT:
-                    x -= 20;
+                    x -= 15;
                     break;
                 case TOP_TO_BOTTOM:
-                    y -= 20;
+                    y -= 15;
                     break;
                 case BOTTOM_TO_TOP:
-                    y += 20;
+                    y += 15;
                     break;
             }
             Log.d(TAG, "times: " + this.times);
