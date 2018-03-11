@@ -21,6 +21,8 @@ public class GameActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        gameDrawableView = findViewById(R.id.gameView);
+
         setContentView(R.layout.activity_game);
     }
 }

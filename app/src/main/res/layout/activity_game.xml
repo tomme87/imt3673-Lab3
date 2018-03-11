@@ -7,6 +7,7 @@
     tools:context="no.ntnu.tomme87.imt3673.lab3.GameActivity">
 
     <no.ntnu.tomme87.imt3673.lab3.GameDrawableView
+        android:id="@+id/gameView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"/>
