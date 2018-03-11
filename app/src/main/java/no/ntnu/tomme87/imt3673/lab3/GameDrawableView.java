@@ -40,6 +40,8 @@ public class GameDrawableView extends View implements SensorEventListener, Colli
     private Vibrator vibrator;
     private ToneGenerator toneGenerator;
 
+    private Timer timer;
+
     public GameDrawableView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
 
@@ -49,7 +51,7 @@ public class GameDrawableView extends View implements SensorEventListener, Colli
         this.setupBorder();
 
         // Update view every 20ms
-        Timer timer = new Timer();
+        this.timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -143,5 +145,14 @@ public class GameDrawableView extends View implements SensorEventListener, Colli
     public void onCollision() {
         vibrator.vibrate(100);
         toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP, 100);
+    }
+
+    /**
+     * Cancel timer and unregister listener.
+     */
+    public void stop() {
+        sensorManager.unregisterListener(this);
+        timer.cancel();
+        timer.purge();
     }
 }

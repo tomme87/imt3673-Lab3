@@ -3,12 +3,11 @@ package no.ntnu.tomme87.imt3673.lab3;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
 public class GameActivity extends AppCompatActivity {
-
-    GameDrawableView gameDrawableView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +20,13 @@ public class GameActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        gameDrawableView = findViewById(R.id.gameView);
-
         setContentView(R.layout.activity_game);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        GameDrawableView gameDrawableView = findViewById(R.id.gameView);
+        gameDrawableView.stop();
     }
 }
